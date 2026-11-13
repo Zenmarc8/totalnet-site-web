@@ -64,6 +64,47 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     setIsSubmitting(false);
     setSentSuccess(true);
   };
+
+    setIsSubmitting(true);
+
+    const nameParts = name.trim().split(/\s+/);
+    const firstName = nameParts[0] || name.trim();
+    const lastName = nameParts.slice(1).join(' ') || '-';
+
+    const lead: LeadSubmission = {
+      id: generateLeadId(),
+      createdAt: new Date().toISOString(),
+      siteId: siteConfig.siteId,
+      serviceId: 'contact-general',
+      serviceName: `Contact : ${subject}`,
+      propertyType: 'Non spécifié (Formulaire Contact)',
+      specificNeeds: [subject],
+      dimensions: {
+        notes: message,
+      },
+      timeframe: 'Dès que possible',
+      customer: {
+        firstName,
+        lastName,
+        phone,
+        email,
+        city: 'Grand Montréal',
+        postalCode: 'H1L 4S2',
+        notes: message,
+      },
+      photosCount: 0,
+      photoNames: [],
+      isOutOfTerritory: false,
+      privacyConsentAccepted: consentAccepted,
+      marketingConsentAccepted: false,
+      status: 'transmis_supabase',
+    };
+
+    await submitLead(lead);
+
+    setIsSubmitting(false);
+    setSentSuccess(true);
+  };
   };
 
   return (
