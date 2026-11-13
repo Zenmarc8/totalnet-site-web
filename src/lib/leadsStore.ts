@@ -120,3 +120,39 @@ export function exportLeadsToCsv(leads: LeadSubmission[]): string {
 
   return [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
 }
+export async function uploadLeadPhotos(leadId: string, files: File[]): Promise<string[]> {
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseAnonKey || files.length === 0) {
+    return files.map((f) => f.name);
+  }
+
+  const uploadedUrls: string[] = [];
+
+  for (const file of files) {
+    const cleanName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const filePath = `${leadId}/${Date.now()}_${cleanName}`;
+
+    try {
+      const res = await fetch(`${supabaseUrl}/storage/v1/object/lead-photos/${filePath}`, {
+        method: 'POST',
+        headers: {
+          apikey: supabaseAnonKey,
+          Authorization: `Bearer ${supabaseAnonKey}`,
+          'Content-Type': file.type || 'application/octet-stream',
+        },
+        body: file,
+      });
+
+      if (res.ok) {
+        uploadedUrls.push(`${supabaseUrl}/storage/v1/object/public/lead-photos/${filePath}`);
+      } else {
+        uploadedUrls.push(file.name);
+      }
+    } catch {
+      uploadedUrls.push(file.name);
+    }
+  }
+
+  return uploadedUrls;
+}
