@@ -13,7 +13,7 @@ import { defaultCookieConfig } from './cookie.config';
  */
 export const totalnetGeneralPreset: SiteConfig = {
   siteId: 'totalnet-general',
-  domain: 'totalnet-quebec.ca',
+  domain: 'totalnetentretien.com',
   branding: defaultBrandingConfig,
   contact: defaultContactConfig,
   services: servicesConfig,
