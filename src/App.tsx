@@ -3,6 +3,7 @@ import { defaultSiteConfig, getSiteConfigById, allSitePresets, SiteConfig } from
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { SiteSwitcherBanner } from './components/layout/SiteSwitcherBanner';
+import { PasswordLockScreen } from './components/layout/PasswordLockScreen';
 import { CookieConsentBanner } from './components/cookies/CookieConsentBanner';
 import { AdminDashboardModal } from './components/dashboard/AdminDashboardModal';
 import { JsonLd } from './components/seo/JsonLd';
@@ -28,6 +29,14 @@ import { LegalNoticePage } from './pages/legal/LegalNoticePage';
 import { AccessibilityPage } from './pages/legal/AccessibilityPage';
 import { PrivacyContactPage } from './pages/legal/PrivacyContactPage';
 
+const MAINTENANCE_STORAGE_KEY = 'totalnet_maintenance_unlocked';
+const SITE_PASSWORD = (import.meta.env.VITE_SITE_PASSWORD || '').trim();
+
+function checkAdminParam(): boolean {
+  if (typeof window === 'undefined') return false;
+  return new URLSearchParams(window.location.search).get('admin') === '1';
+}
+
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
     if (typeof window !== 'undefined') {
@@ -36,6 +45,17 @@ export default function App() {
     return '/';
   });
 
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
+    if (!SITE_PASSWORD) return true;
+    if (typeof window === 'undefined') return false;
+    try {
+      return sessionStorage.getItem(MAINTENANCE_STORAGE_KEY) === SITE_PASSWORD;
+    } catch {
+      return false;
+    }
+  });
+
+  const [isAdminMode, setIsAdminMode] = useState<boolean>(() => checkAdminParam());
   const [currentSiteConfig, setCurrentSiteConfig] = useState<SiteConfig>(defaultSiteConfig);
   const [isAdminDashboardOpen, setIsAdminDashboardOpen] = useState(false);
   const [isCookieExplicitOpen, setIsCookieExplicitOpen] = useState(false);
@@ -58,15 +78,34 @@ export default function App() {
   useEffect(() => {
     const handlePopState = () => {
       setCurrentPath(window.location.pathname || '/');
+      setIsAdminMode(checkAdminParam());
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  const handleUnlock = () => {
+    if (typeof window !== 'undefined' && SITE_PASSWORD) {
+      try {
+        sessionStorage.setItem(MAINTENANCE_STORAGE_KEY, SITE_PASSWORD);
+      } catch {
+        // Fallback if sessionStorage is unavailable
+      }
+    }
+    setIsUnlocked(true);
+  };
+
   const navigateTo = (path: string) => {
     setCurrentPath(path);
     if (typeof window !== 'undefined') {
-      window.history.pushState({}, '', path);
+      let targetUrl = path;
+      if (isAdminMode) {
+        const separator = path.includes('?') ? '&' : '?';
+        if (!path.includes('admin=1')) {
+          targetUrl = `${path}${separator}admin=1`;
+        }
+      }
+      window.history.pushState({}, '', targetUrl);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -163,17 +202,30 @@ export default function App() {
     return <NotFoundPage siteConfig={currentSiteConfig} onNavigate={navigateTo} />;
   };
 
+  // Maintenance password lock screen when VITE_SITE_PASSWORD is set and not yet unlocked
+  if (SITE_PASSWORD && !isUnlocked) {
+    return (
+      <PasswordLockScreen
+        siteConfig={currentSiteConfig}
+        expectedPassword={SITE_PASSWORD}
+        onUnlock={handleUnlock}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-blue-600 selection:text-white">
       {/* Schema.org Structured Data */}
       <JsonLd siteConfig={currentSiteConfig} currentPath={currentPath} />
 
-      {/* 1. Multisite Demo Switcher Banner */}
-      <SiteSwitcherBanner
-        currentSiteConfig={currentSiteConfig}
-        onSelectSite={handleSelectSitePreset}
-        onOpenDashboard={() => setIsAdminDashboardOpen(true)}
-      />
+      {/* 1. Multisite Demo Switcher Banner (only when ?admin=1 is in URL) */}
+      {isAdminMode && (
+        <SiteSwitcherBanner
+          currentSiteConfig={currentSiteConfig}
+          onSelectSite={handleSelectSitePreset}
+          onOpenDashboard={() => setIsAdminDashboardOpen(true)}
+        />
+      )}
 
       {/* 2. Top Header */}
       <Header
@@ -181,6 +233,7 @@ export default function App() {
         currentPath={currentPath}
         onNavigate={navigateTo}
         onOpenDashboard={() => setIsAdminDashboardOpen(true)}
+        showAdminControls={isAdminMode}
       />
 
       {/* 3. Main Page Content */}
@@ -203,11 +256,13 @@ export default function App() {
       />
 
       {/* 6. Admin & Multi-site Inspection Modal */}
-      <AdminDashboardModal
-        isOpen={isAdminDashboardOpen}
-        onClose={() => setIsAdminDashboardOpen(false)}
-        siteConfig={currentSiteConfig}
-      />
+      {isAdminMode && (
+        <AdminDashboardModal
+          isOpen={isAdminDashboardOpen}
+          onClose={() => setIsAdminDashboardOpen(false)}
+          siteConfig={currentSiteConfig}
+        />
+      )}
     </div>
   );
 }

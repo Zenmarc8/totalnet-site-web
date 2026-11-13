@@ -18,13 +18,15 @@ interface HeaderProps {
   currentPath: string;
   onNavigate: (path: string) => void;
   onOpenDashboard: () => void;
+  showAdminControls?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   siteConfig,
   currentPath,
   onNavigate,
-  onOpenDashboard
+  onOpenDashboard,
+  showAdminControls = false
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -62,14 +64,16 @@ export const Header: React.FC<HeaderProps> = ({
               <span>Ligne directe : <strong className="underline decoration-[#76A8F9]">{siteConfig.contact.phoneDisplay}</strong></span>
             </a>
 
-            <button
-              onClick={onOpenDashboard}
-              title="Ouvrir la console de gestion Rank & Rent"
-              className="hidden lg:inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/20 text-[#76A8F9] border border-blue-400/30 transition-colors"
-            >
-              <SlidersHorizontal className="w-3 h-3" />
-              Console Rank & Rent
-            </button>
+            {showAdminControls && (
+              <button
+                onClick={onOpenDashboard}
+                title="Ouvrir la console de gestion Rank & Rent"
+                className="hidden lg:inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/20 text-[#76A8F9] border border-blue-400/30 transition-colors"
+              >
+                <SlidersHorizontal className="w-3 h-3" />
+                Console Rank & Rent
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -244,16 +248,18 @@ export const Header: React.FC<HeaderProps> = ({
               Demander une soumission en ligne
             </button>
 
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenDashboard();
-              }}
-              className="w-full py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 flex items-center justify-center gap-2"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-blue-600" />
-              Console Rank & Rent (30+ sites)
-            </button>
+            {showAdminControls && (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenDashboard();
+                }}
+                className="w-full py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 flex items-center justify-center gap-2"
+              >
+                <SlidersHorizontal className="w-3.5 h-3.5 text-blue-600" />
+                Console Rank & Rent (30+ sites)
+              </button>
+            )}
           </div>
         </div>
       )}
