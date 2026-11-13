@@ -229,8 +229,11 @@ export const LeadQualificationWizard: React.FC<WizardProps> = ({
       ? `Autre : ${otherServiceText}`
       : (chosenServiceObj?.name || 'Service de nettoyage');
 
+    const leadId = generateLeadId();
+    const savedPhotoUrls = await uploadLeadPhotos(leadId, uploadedPhotos);
+
     const lead: LeadSubmission = {
-      id: generateLeadId(),
+      id: leadId,
       createdAt: new Date().toISOString(),
       siteId: siteConfig.siteId,
       serviceId: selectedServiceId,
