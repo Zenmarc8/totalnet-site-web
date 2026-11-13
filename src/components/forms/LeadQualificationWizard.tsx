@@ -260,7 +260,7 @@ export const LeadQualificationWizard: React.FC<WizardProps> = ({
         notes: comments || undefined
       },
       photosCount: uploadedPhotos.length,
-      photoNames: uploadedPhotos.map(p => p.name),
+     photoNames: savedPhotoUrls,
       isOutOfTerritory: !territoryCheck.isCovered,
       privacyConsentAccepted,
       marketingConsentAccepted,
