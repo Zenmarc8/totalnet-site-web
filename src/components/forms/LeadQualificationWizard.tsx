@@ -28,7 +28,7 @@ import {
 import { SiteConfig, LeadSubmission } from '../../config/types';
 import { checkTerritoryCoverage } from '../../config/locations.config';
 import { formatQuebecPhone, formatPostalCode, isValidQuebecPostalCode, generateLeadId } from '../../lib/utils';
-import { submitLead } from '../../lib/leadsStore';
+import { submitLead, uploadLeadPhotos } from '../../lib/leadsStore';
 import { LeadSuccessModal } from './LeadSuccessModal';
 
 interface WizardProps {
