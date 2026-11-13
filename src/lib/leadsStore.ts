@@ -14,6 +14,50 @@ export async function submitLead(lead: LeadSubmission): Promise<{ success: boole
     }
   }
 
+  // Envoi vers Supabase (table leads_soumissions)
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  if (supabaseUrl && supabaseAnonKey) {
+    try {
+      await fetch(`${supabaseUrl}/rest/v1/leads_soumissions`, {
+        method: 'POST',
+        headers: {
+          apikey: supabaseAnonKey,
+          Authorization: `Bearer ${supabaseAnonKey}`,
+          'Content-Type': 'application/json',
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify({
+          id: lead.id,
+          created_at: lead.createdAt,
+          site_id: lead.siteId,
+          service_id: lead.serviceId,
+          service_name: lead.serviceName,
+          property_type: lead.propertyType,
+          specific_needs: lead.specificNeeds,
+          dimensions: lead.dimensions,
+          timeframe: lead.timeframe,
+          preferred_date: lead.preferredDate || null,
+          customer_first_name: lead.customer.firstName,
+          customer_last_name: lead.customer.lastName,
+          customer_phone: lead.customer.phone,
+          customer_email: lead.customer.email,
+          customer_city: lead.customer.city,
+          customer_postal_code: lead.customer.postalCode,
+          customer_street_address: lead.customer.streetAddress || null,
+          customer_notes: lead.customer.notes || null,
+          photos_count: lead.photosCount,
+          photo_names: lead.photoNames,
+          is_out_of_territory: lead.isOutOfTerritory,
+          privacy_consent_accepted: lead.privacyConsentAccepted,
+          marketing_consent_accepted: lead.marketingConsentAccepted,
+          status: lead.status,
+        }),
+      });
+    } catch (err) {
+      console.warn('Supabase insert error:', err);
+    }
+  }
   // Optional real dispatch to external webhook if configured
   try {
     // If user provided a custom webhook URL via env, attempt POST
