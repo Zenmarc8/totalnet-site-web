@@ -18,7 +18,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ siteConfig, onNavigate
   const [message, setMessage] = useState('');
   const [consentAccepted, setConsentAccepted] = useState(false);
   const [sentSuccess, setSentSuccess] = useState(false);
-const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,48 +65,6 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     setSentSuccess(true);
   };
 
-    setIsSubmitting(true);
-
-    const nameParts = name.trim().split(/\s+/);
-    const firstName = nameParts[0] || name.trim();
-    const lastName = nameParts.slice(1).join(' ') || '-';
-
-    const lead: LeadSubmission = {
-      id: generateLeadId(),
-      createdAt: new Date().toISOString(),
-      siteId: siteConfig.siteId,
-      serviceId: 'contact-general',
-      serviceName: `Contact : ${subject}`,
-      propertyType: 'Non spécifié (Formulaire Contact)',
-      specificNeeds: [subject],
-      dimensions: {
-        notes: message,
-      },
-      timeframe: 'Dès que possible',
-      customer: {
-        firstName,
-        lastName,
-        phone,
-        email,
-        city: 'Grand Montréal',
-        postalCode: 'H1L 4S2',
-        notes: message,
-      },
-      photosCount: 0,
-      photoNames: [],
-      isOutOfTerritory: false,
-      privacyConsentAccepted: consentAccepted,
-      marketingConsentAccepted: false,
-      status: 'transmis_supabase',
-    };
-
-    await submitLead(lead);
-
-    setIsSubmitting(false);
-    setSentSuccess(true);
-  };
-  };
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-12">
       <Breadcrumbs
@@ -132,7 +90,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         <div className="lg:col-span-5 space-y-6">
           <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-4 shadow-2xs">
             <h3 className="font-bold text-slate-900 text-base">Coordonnées principales</h3>
-            
+
             <div className="space-y-4 text-xs">
               <div className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-800 flex items-center justify-center shrink-0">
@@ -324,10 +282,11 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-md transition-colors flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
-                  Transmettre mon message
+                  {isSubmitting ? 'Transmission en cours...' : 'Transmettre mon message'}
                 </button>
               </form>
             )}
