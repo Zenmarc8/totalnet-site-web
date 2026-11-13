@@ -128,11 +128,11 @@ export const PasswordLockScreen: React.FC<PasswordLockScreenProps> = ({
               Besoin d’un service de nettoyage ou d’une soumission ?
             </p>
             <a
-              href="tel:+15148751100"
+              href="tel:+15148200368"
               className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#05284F] font-bold text-sm transition-colors"
             >
               <Phone className="w-4 h-4 text-emerald-600" />
-              <span>(514) 875-1100</span>
+              <span>(514) 8200368</span>
             </a>
           </div>
         </div>
