@@ -1,0 +1,8 @@
+{
+  "name": "TotalNet - Architecture Rank & Rent Québec",
+  "description": "Moteur maître multisite haute performance pour entreprises de nettoyage au Québec : qualification de leads par étapes, SEO local Schema.org, conformité Loi 25 et intégration Supabase / GoHighLevel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

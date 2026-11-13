@@ -1,0 +1,1049 @@
+Oui. J'ai repris les éléments de nos discussions sur TotalNet, ton projet de 30+ sites Rank & Rent, ton architecture Astro, GitHub, Vercel, les formulaires de qualification, le SEO, les images, les performances et les obligations légales au Québec.
+
+Je vais te préparer un PROMPT MAÎTRE D'ARCHITECTURE, destiné à Bolt ou Google AI Studio.
+
+L'objectif est important : tu ne veux pas simplement un beau site de nettoyage. Tu veux construire un système professionnel, réutilisable, capable de produire plusieurs sites spécialisés sans devoir tout recommencer à chaque fois.
+
+La règle fondamentale : on construit d'abord le moteur, ensuite on remplit les pages.
+
+Le premier projet sera un site général de nettoyage. L'architecture devra ensuite pouvoir accueillir des sites spécialisés (nettoyage de tapis, entretien commercial, lavage de vitres, nettoyage après construction, etc.).
+
+Le prompt ci-dessous demande à l'IA de travailler directement dans ton projet GitHub, de construire les fichiers et de tester les fonctionnalités, pas seulement de te donner des exemples de code.
+
+# PROMPT MAÎTRE — ARCHITECTURE TOTALNET
+
+## Site Web de nettoyage général — Modèle réutilisable pour 30+ sites Rank & Rent
+
+**RÔLE DE L'IA**
+
+Tu agis comme une équipe senior réunissant :
+
+- Architecte logiciel spécialisé en Astro.
+- Développeur Full Stack TypeScript.
+- Expert SEO technique et SEO local.
+- Expert UX/UI et conversion.
+- Expert performance Web Core Vitals.
+- Expert optimisation et gestion des images.
+- Expert sécurité et protection des données.
+- Expert intégration CRM, formulaires et automatisations.
+- Expert conformité Web au Québec, notamment la Loi 25.
+
+Tu dois construire un véritable système de sites Web professionnels, rapide, évolutif, réutilisable et optimisé pour Google.
+
+**IMPORTANT :** Tu travailles directement dans le dépôt GitHub existant. Tu dois d'abord examiner les fichiers et comprendre l'architecture déjà présente. Ne détruis pas les éléments fonctionnels et ne recommence pas inutilement ce qui est déjà construit.
+
+Ne te contente pas de proposer une architecture théorique. Construis réellement les fichiers, les composants, les pages, les configurations et les fonctionnalités.
+
+---
+
+# 1. OBJECTIF GÉNÉRAL
+
+Créer un site Web complet pour une entreprise de nettoyage général au Québec.
+
+Ce site servira de modèle maître pour la création ultérieure de 30 sites ou davantage.
+
+L'architecture devra permettre de modifier facilement :
+
+- Le nom de l'entreprise.
+- Le logo.
+- Les couleurs.
+- Le numéro de téléphone.
+- Les courriels.
+- Le territoire desservi.
+- Les services offerts.
+- Les prix, lorsque configurés.
+- Les textes.
+- Les photos.
+- Les partenaires de service.
+- Les formulaires.
+- Les informations légales.
+- Les paramètres SEO.
+- Les intégrations et automatisations.
+
+Le but est de pouvoir créer un nouveau site à partir du même moteur, en modifiant principalement ses données et son contenu, sans reconstruire la programmation.
+
+Le système doit être indépendant du contenu particulier d'un site.
+
+# 2. TECHNOLOGIES ET ARCHITECTURE
+
+Utiliser prioritairement :
+
+- Astro comme framework principal.
+- TypeScript.
+- Tailwind CSS.
+- GitHub pour le code source et les versions.
+- Vercel pour l'hébergement et les déploiements.
+- Supabase pour la base de données et le stockage des demandes, si nécessaire.
+- GoHighLevel pour le CRM et les automatisations, par intégration configurable.
+- Google Search Console.
+- Google Analytics 4.
+- Google Tag Manager, uniquement selon les choix de consentement.
+- Schema.org pour les données structurées.
+
+Privilégier le rendu statique et le pré-rendu des pages.
+
+Utiliser JavaScript uniquement lorsqu'il apporte une fonctionnalité nécessaire.
+
+Les formulaires et les fonctionnalités dynamiques doivent passer par des API sécurisées.
+
+Ne pas transformer inutilement le site en application JavaScript lourde.
+
+L'architecture doit être :
+
+- Modulaire.
+- Réutilisable.
+- Facile à maintenir.
+- Rapide à charger.
+- SEO friendly.
+- Compatible mobile.
+- Évolutive pour plusieurs domaines.
+- Économique à exploiter.
+
+Prévoir une séparation claire entre :
+
+1. Le moteur du site.
+2. Les composants.
+3. Les données de chaque entreprise.
+4. Les contenus.
+5. Les paramètres SEO.
+6. Les intégrations externes.
+
+# 3. DESIGN ET IDENTITÉ VISUELLE
+
+Créer une identité professionnelle, moderne, rassurante et adaptée au marché québécois.
+
+Direction artistique :
+
+- Apparence d'une PME solide et établie.
+- Pas de style d'agence marketing.
+- Pas de surcharge graphique.
+- Pas d'animations inutiles.
+- Navigation simple.
+- Appels à l'action visibles.
+- Beaucoup d'espace blanc.
+- Icônes vectorielles simples.
+- Photographies réalistes et pertinentes.
+
+Palette de référence TotalNet :
+
+- Bleu principal : #05284F
+- Bleu secondaire : #76A8F9
+- Blanc : #FFFFFF
+- Fonds secondaires : gris très pâle.
+- Texte : gris foncé.
+
+Créer un système de design avec des variables CSS centralisées.
+
+Les couleurs, les espacements, les polices, les boutons, les cartes et les formulaires doivent être modifiables sans intervenir dans chaque page.
+
+Prévoir un affichage impeccable sur :
+
+- Téléphones.
+- Tablettes.
+- Ordinateurs.
+- Grands écrans.
+
+# 4. ARCHITECTURE DES PAGES
+
+Construire les pages suivantes.
+
+## A. Pages principales
+
+1. Accueil — /
+2. À propos — /a-propos/
+3. Tous nos services — /services/
+4. Secteurs desservis — /secteurs-desservis/
+5. Demande de soumission — /soumission/
+6. Contact — /contact/
+7. FAQ — /faq/
+
+## B. Pages de services
+
+Créer une architecture dynamique avec une page individuelle pour chaque service.
+
+Prévoir notamment :
+
+1. Nettoyage résidentiel.
+2. Nettoyage commercial.
+3. Entretien ménager régulier.
+4. Nettoyage de tapis.
+5. Nettoyage de carpettes.
+6. Nettoyage de meubles rembourrés.
+7. Nettoyage de matelas.
+8. Nettoyage de planchers.
+9. Décapage et cirage de planchers.
+10. Nettoyage de vitres.
+11. Nettoyage après construction.
+12. Nettoyage après rénovation.
+13. Nettoyage après sinistre.
+14. Nettoyage après dégât d'eau.
+15. Nettoyage des odeurs.
+16. Nettoyage spécialisé.
+17. Lavage à pression.
+18. Nettoyage extérieur.
+19. Entretien d'immeubles.
+20. Nettoyage industriel.
+
+Chaque service doit être activable ou désactivable par configuration.
+
+Ne pas publier automatiquement des pages pour des services qui ne sont pas réellement offerts.
+
+Chaque page de service doit avoir sa propre structure SEO, son contenu unique, ses images, ses appels à l'action, ses questions fréquentes et ses liens internes.
+
+## C. Pages territoriales
+
+Créer un système dynamique pour les villes et municipalités desservies.
+
+Exemple :
+
+/secteurs-desservis/laval/\
+/secteurs-desservis/montreal/\
+/secteurs-desservis/longueuil/\
+/secteurs-desservis/terrebonne/
+
+Prévoir également la possibilité de créer des pages combinant service et territoire, lorsque cela apporte une réelle valeur :
+
+/nettoyage-de-tapis/laval/\
+/nettoyage-commercial/longueuil/
+
+Chaque page locale doit présenter des informations véritablement pertinentes pour le territoire.
+
+INTERDICTION :
+
+- Dupliquer le même texte en changeant uniquement le nom de la ville.
+- Créer automatiquement des centaines de pages sans contenu utile.
+- Inventer des adresses, des équipes, des établissements ou des avis clients.
+- Ajouter des mots-clés artificiellement.
+
+Le système doit pouvoir générer les pages à partir de données structurées, mais leur publication doit être contrôlée.
+
+## D. Pages légales et conformité
+
+Créer les pages suivantes :
+
+1. Politique de confidentialité.
+2. Politique de gestion des renseignements personnels.
+3. Politique relative aux témoins (cookies).
+4. Conditions d'utilisation.
+5. Avis légal.
+6. Accessibilité.
+7. Contact relatif à la protection des renseignements personnels.
+
+Prévoir une section de gestion des incidents de confidentialité et une procédure interne de conservation et de destruction des renseignements.
+
+Tenir compte notamment :
+
+- De la Loi 25 du Québec.
+- Des obligations applicables en matière de renseignements personnels.
+- De la LPRPDE lorsque pertinente.
+- Des règles applicables au consentement aux témoins.
+- Des obligations de communication commerciale de la LCAP lorsque des communications électroniques sont utilisées.
+
+Les textes juridiques doivent être personnalisables selon l'entreprise, ses pratiques réelles, ses fournisseurs et ses intégrations.
+
+Ne jamais inventer de coordonnées, de responsable de la protection des renseignements personnels ou de pratiques de conservation.
+
+Identifier clairement les éléments nécessitant une validation juridique.
+
+# 5. PAGE D'ACCUEIL — PRIORITÉ ABSOLUE
+
+La page d'accueil doit être conçue pour convertir les visiteurs en demandes de soumission qualifiées.
+
+La première impression doit immédiatement répondre à trois questions :
+
+1. Quels services offrons-nous ?
+2. Quel territoire desservons-nous ?
+3. Comment demander une soumission ?
+
+## Structure de la page d'accueil
+
+### Section 1 — HERO
+
+Créer une grande section supérieure comprenant :
+
+- Une photographie professionnelle pertinente.
+- Un titre H1 clair.
+- Une courte description.
+- Un bouton « Demander une soumission ».
+- Un bouton « Voir nos services ».
+- Le numéro de téléphone bien visible.
+
+Le visiteur doit comprendre immédiatement ce que l'entreprise peut faire pour lui.
+
+### Section 2 — FICHE DE QUALIFICATION DES BESOINS
+
+C'est une fonctionnalité centrale du site.
+
+Intégrer directement dans la page d'accueil une fiche de demande de service claire, visible et facile à utiliser.
+
+Le formulaire doit être plus simple qu'un formulaire traditionnel.
+
+Créer une expérience guidée, idéalement une question par écran, avec :
+
+- Barre de progression.
+- Réponses par boutons ou cases à cocher.
+- Navigation précédente/suivante.
+- Affichage adapté aux téléphones.
+- Sauvegarde temporaire des réponses.
+- Possibilité de joindre des photos.
+- Possibilité de revenir modifier les réponses.
+
+Prévoir les étapes suivantes :
+
+**ÉTAPE 1 — Quel service recherchez-vous ?**
+
+Choix multiples :
+
+- Nettoyage résidentiel.
+- Nettoyage commercial.
+- Nettoyage de tapis.
+- Nettoyage de meubles.
+- Nettoyage de matelas.
+- Nettoyage de planchers.
+- Nettoyage de vitres.
+- Nettoyage après construction.
+- Nettoyage après sinistre.
+- Nettoyage spécialisé.
+- Autre.
+
+**ÉTAPE 2 — Quel type de propriété ?**
+
+- Maison.
+- Condo.
+- Appartement.
+- Bureau.
+- Commerce.
+- Immeuble à logements.
+- Édifice commercial.
+- Usine.
+- Entrepôt.
+- Autre.
+
+**ÉTAPE 3 — Quels sont vos besoins précis ?**
+
+Les choix doivent s'adapter au service sélectionné.
+
+Exemples :
+
+Pour les tapis :
+
+- Tapis résidentiel.
+- Tapis commercial.
+- Carpettes.
+- Tapis collés.
+- Dalles de tapis.
+- Taches.
+- Odeurs.
+- Saleté importante.
+
+Pour les meubles :
+
+- Sofa.
+- Fauteuil.
+- Chaises.
+- Matelas.
+- Mobilier commercial.
+- Autre.
+
+Pour les planchers :
+
+- Céramique.
+- Vinyle.
+- Bois.
+- Béton.
+- Décapage et cirage.
+- Entretien régulier.
+
+Pour le nettoyage général :
+
+- Cuisine.
+- Salle de bain.
+- Chambres.
+- Aires communes.
+- Bureaux.
+- Autres pièces.
+
+Prévoir une option « Autre » avec précision écrite.
+
+**ÉTAPE 4 — Dimensions et quantité**
+
+Permettre de préciser :
+
+- Nombre de pièces.
+- Nombre de bureaux.
+- Nombre de tapis.
+- Superficie approximative.
+- Nombre d'étages.
+- Nombre d'éléments à nettoyer.
+- Dimensions approximatives.
+- Informations supplémentaires.
+
+Ne pas imposer des dimensions lorsque celles-ci ne sont pas nécessaires.
+
+**ÉTAPE 5 — Quand souhaitez-vous le service ?**
+
+- Dès que possible.
+- Cette semaine.
+- Dans les deux prochaines semaines.
+- Dans le mois.
+- Service récurrent.
+- Date à déterminer.
+
+Permettre d'indiquer une date souhaitée.
+
+**ÉTAPE 6 — Coordonnées**
+
+Demander :
+
+- Prénom.
+- Nom.
+- Téléphone.
+- Courriel.
+- Ville.
+- Code postal.
+- Adresse du service, si nécessaire.
+- Commentaires supplémentaires.
+
+Ajouter la possibilité de téléverser des photographies.
+
+Prévoir une limite configurable du nombre de fichiers, de leur poids et de leurs formats.
+
+Prévoir une confirmation claire de la réception de la demande.
+
+### Gestion des demandes
+
+Chaque demande doit :
+
+- Avoir un identifiant unique.
+- Enregistrer la date et l'heure.
+- Enregistrer toutes les réponses.
+- Identifier le service demandé.
+- Identifier le territoire.
+- Conserver les fichiers joints de manière sécurisée.
+- Être enregistrée dans Supabase.
+- Pouvoir être transmise au CRM GoHighLevel.
+- Pouvoir déclencher une notification.
+- Être consultable dans un tableau de bord.
+
+Prévoir une configuration pour les zones desservies.
+
+Si le visiteur se trouve hors territoire, afficher un message poli et ne pas envoyer automatiquement une demande comme si le service était disponible.
+
+Le consentement au traitement de la demande doit être distinct du consentement facultatif aux communications marketing.
+
+Ne jamais cocher les consentements marketing par défaut.
+
+### Section 3 — Services
+
+Présenter les principales catégories sous forme de cartes visuelles.
+
+Chaque carte comprend :
+
+- Une image optimisée.
+- Le nom du service.
+- Une description courte.
+- Un lien vers sa page détaillée.
+
+### Section 4 — Pourquoi nous choisir ?
+
+Présenter des arguments crédibles et vérifiables.
+
+Ne pas inventer :
+
+- Des années d'expérience.
+- Des certifications.
+- Des assurances.
+- Des garanties.
+- Des avis clients.
+- Des équipements.
+- Des employés.
+
+Utiliser des données configurables.
+
+### Section 5 — Types de clients
+
+Présenter les catégories :
+
+- Résidentiel.
+- Commercial.
+- Industriel.
+- Gestionnaires immobiliers.
+- Copropriétés.
+- Commerces et bureaux.
+
+### Section 6 — Territoires desservis
+
+Présenter les villes principales avec des liens vers leurs pages respectives.
+
+### Section 7 — FAQ
+
+Afficher les questions les plus pertinentes.
+
+### Section 8 — Appel à l'action
+
+Terminer avec une invitation claire à demander une soumission.
+
+### Section 9 — Pied de page
+
+Inclure :
+
+- Logo.
+- Coordonnées.
+- Navigation.
+- Services.
+- Territoires.
+- Pages légales.
+- Réseaux sociaux si configurés.
+- Copyright dynamique.
+
+# 6. GESTION DES IMAGES — PRIORITÉ ÉLEVÉE
+
+Je veux une gestion automatisée des images afin d'obtenir la meilleure vitesse possible.
+
+Mettre en place un système centralisé de traitement des images.
+
+Exigences :
+
+1. Conversion automatique en WebP ou AVIF lorsque pertinent.
+2. Redimensionnement selon l'utilisation réelle.
+3. Génération de plusieurs tailles responsives.
+4. Compression automatique.
+5. Définition des dimensions pour éviter les déplacements de contenu.
+6. Lazy loading pour les images hors écran.
+7. Chargement prioritaire de l'image principale du HERO.
+8. Utilisation de srcset et sizes lorsque pertinent.
+9. Attribut alt descriptif pour chaque image informative.
+10. Aucun chargement d'image inutile.
+
+Créer une bibliothèque d'images organisée par :
+
+- Catégorie de service.
+- Type de propriété.
+- Pièce.
+- Équipement.
+- Résultat du nettoyage.
+- Territoire, lorsque pertinent.
+
+Créer des composants réutilisables pour les images.
+
+Prévoir une configuration de remplacement des images sans modifier les composants.
+
+Ne jamais utiliser des photos de mauvaise qualité, des images déformées ou des images non pertinentes.
+
+Les images doivent être autorisées à l'utilisation.
+
+# 7. PERFORMANCE ET VITESSE
+
+La vitesse est une priorité majeure.
+
+Optimiser le site pour les Core Web Vitals.
+
+Objectifs de référence :
+
+- LCP inférieur ou égal à 2,5 secondes.
+- INP inférieur ou égal à 200 ms.
+- CLS inférieur ou égal à 0,1.
+
+Viser des résultats Lighthouse de 95 à 100 lorsque les conditions de mesure le permettent, notamment sur mobile.
+
+Mettre en œuvre :
+
+- HTML sémantique.
+- CSS optimisé.
+- JavaScript minimal.
+- Chargement différé.
+- Images responsives.
+- Préchargement des ressources critiques lorsque pertinent.
+- Polices optimisées.
+- Mise en cache.
+- Compression.
+- Réduction des requêtes externes.
+- Élimination des scripts inutiles.
+- Aucun composant lourd sans justification.
+
+Ne jamais sacrifier le SEO ou les fonctionnalités pour obtenir artificiellement un meilleur score.
+
+# 8. SEO TECHNIQUE COMPLET
+
+Construire une architecture SEO professionnelle.
+
+Chaque page doit pouvoir avoir ses propres :
+
+- Title.
+- Meta description.
+- H1.
+- H2 et H3.
+- URL propre.
+- Canonical.
+- Open Graph.
+- Image de partage.
+- Données structurées.
+- Texte alternatif.
+- Liens internes.
+
+Prévoir :
+
+- Sitemap XML dynamique.
+- Robots.txt.
+- Canonical automatique.
+- Gestion des redirections 301.
+- Gestion des erreurs 404.
+- URLs propres.
+- Fil d'Ariane.
+- Maillage interne.
+- Pagination si nécessaire.
+- Pages indexables configurables.
+- Contrôle noindex.
+- Hreflang pour une future version française et anglaise.
+- Attribut lang correct.
+- Prévention des contenus dupliqués.
+- Structure de titres logique.
+
+## Schema.org
+
+Mettre en place les données structurées JSON-LD pertinentes :
+
+- Organization.
+- LocalBusiness ou type plus précis, si justifié.
+- WebSite.
+- WebPage.
+- Service.
+- BreadcrumbList.
+- Article pour les articles éditoriaux.
+- FAQPage uniquement si son utilisation respecte les conditions applicables de Google.
+
+Les données doivent être dynamiques et provenir de la configuration du site.
+
+Ne jamais inventer :
+
+- Les notes.
+- Les avis.
+- Les prix.
+- Les horaires.
+- Les coordonnées.
+- Les zones réellement desservies.
+
+Prévoir la validation des données structurées avec les outils de Google.
+
+# 9. POPUP DE CONSENTEMENT AUX COOKIES
+
+Créer une véritable interface de gestion du consentement.
+
+À la première visite, afficher un bandeau ou une fenêtre discrète et professionnelle.
+
+Proposer trois choix clairement visibles :
+
+1. Accepter tous les cookies.
+2. Refuser les cookies non essentiels.
+3. Personnaliser mes choix.
+
+Dans les préférences, permettre de sélectionner :
+
+- Cookies essentiels.
+- Cookies analytiques.
+- Cookies de performance.
+- Cookies publicitaires et marketing.
+
+Les cookies essentiels sont toujours actifs.
+
+Les catégories facultatives doivent être désactivées par défaut.
+
+Aucun outil d'analyse ou de publicité non essentiel ne doit se déclencher avant le consentement correspondant.
+
+Prévoir :
+
+- Enregistrement du choix.
+- Date et version du consentement.
+- Modification ultérieure des préférences.
+- Retrait du consentement.
+- Lien permanent « Gérer mes cookies » dans le pied de page.
+- Expiration configurable du consentement.
+- Fonctionnement sur ordinateur et mobile.
+
+Prévoir une intégration avec Google Consent Mode lorsque nécessaire.
+
+Le système doit être fonctionnel, et non simplement décoratif.
+
+# 10. SÉCURITÉ ET PROTECTION DES DONNÉES
+
+Mettre en place :
+
+- Validation des formulaires côté client et serveur.
+- Protection contre les injections.
+- Protection contre les soumissions automatisées.
+- Rate limiting.
+- Protection CSRF lorsque nécessaire.
+- Validation stricte des fichiers téléversés.
+- Limites de taille.
+- Contrôle des extensions et types MIME.
+- Stockage sécurisé des fichiers.
+- Politiques RLS dans Supabase.
+- Gestion des clés API par variables d'environnement.
+- Aucune clé secrète dans GitHub.
+- Aucun accès public non autorisé aux demandes.
+- Journalisation des erreurs sans exposer les renseignements personnels.
+
+Créer un fichier .env.example sans aucune vraie clé.
+
+Ajouter un fichier .gitignore correctement configuré.
+
+Prévoir une politique de conservation et de suppression des demandes et des fichiers.
+
+# 11. ACCESSIBILITÉ
+
+Respecter autant que possible WCAG 2.2 niveau AA.
+
+Prévoir :
+
+- Contrastes suffisants.
+- Navigation clavier.
+- Labels explicites.
+- Formulaires accessibles.
+- Messages d'erreur compréhensibles.
+- Focus visible.
+- Textes alternatifs.
+- Structure HTML sémantique.
+- Compatibilité avec les lecteurs d'écran.
+- Boutons de taille adaptée au mobile.
+
+# 12. ANALYTIQUE ET SUIVI DES CONVERSIONS
+
+Préparer les intégrations configurables :
+
+- Google Analytics 4.
+- Google Tag Manager.
+- Google Search Console.
+- Suivi des formulaires.
+- Suivi des clics téléphoniques.
+- Suivi des demandes de soumission.
+- Suivi des services demandés.
+- Suivi des territoires.
+- Suivi des conversions.
+
+Les événements analytiques non essentiels doivent respecter le consentement.
+
+Ne pas envoyer de renseignements personnels dans les événements analytiques.
+
+Prévoir des identifiants de conversion configurables.
+
+# 13. ARCHITECTURE MULTISITE ET CONFIGURATION
+
+C'est un élément fondamental du projet.
+
+Je veux pouvoir utiliser le même moteur pour 30 sites ou davantage.
+
+Créer un dossier de configuration centralisé.
+
+Exemple de structure :
+
+- site.config.ts
+- branding.config.ts
+- contact.config.ts
+- services.config.ts
+- locations.config.ts
+- seo.config.ts
+- integrations.config.ts
+- legal.config.ts
+- cookie.config.ts
+
+Chaque site doit avoir ses propres paramètres.
+
+Il doit être possible de modifier un site sans affecter les autres.
+
+Ne pas mélanger les demandes, les contacts ou les configurations entre différents domaines.
+
+Prévoir une architecture permettant une future gestion centralisée de plusieurs sites, avec séparation des données par site.
+
+Le système doit permettre de créer un nouveau site en reprenant le moteur et en modifiant sa configuration.
+
+# 14. STRUCTURE DES FICHIERS
+
+Organiser le projet de manière claire et professionnelle.
+
+Exemple de structure cible :
+
+src/\
+components/\
+layout/\
+navigation/\
+forms/\
+services/\
+locations/\
+seo/\
+images/\
+cookies/\
+ui/
+
+layouts/
+
+pages/\
+index.astro\
+a-propos.astro\
+services/\
+secteurs-desservis/\
+soumission.astro\
+contact.astro\
+faq.astro\
+politique-confidentialite.astro\
+politique-cookies.astro\
+conditions-utilisation.astro\
+avis-legal.astro\
+accessibilite.astro\
+404.astro
+
+content/\
+services/\
+locations/\
+articles/
+
+config/\
+site.config.ts\
+branding.config.ts\
+contact.config.ts\
+services.config.ts\
+locations.config.ts\
+seo.config.ts\
+integrations.config.ts\
+legal.config.ts\
+cookie.config.ts
+
+lib/\
+seo/\
+images/\
+forms/\
+validation/\
+analytics/\
+database/
+
+styles/
+
+public/\
+images/\
+icons/\
+fonts/
+
+supabase/\
+migrations/
+
+scripts/\
+seo/\
+images/\
+validation/
+
+Cette structure est indicative : adapte-la intelligemment à l'architecture existante et aux conventions actuelles d'Astro.
+
+Ne crée pas inutilement plusieurs fichiers qui font la même chose.
+
+# 15. TABLEAU DE BORD ET GESTION
+
+Préparer les fondations permettant une future interface de gestion.
+
+Prévoir la possibilité de gérer :
+
+- Les demandes reçues.
+- Les coordonnées des prospects.
+- Les services.
+- Les territoires.
+- Les contenus.
+- Les images.
+- Les paramètres SEO.
+- Les intégrations.
+- Les formulaires.
+- Les partenaires.
+
+Ne pas développer un gros système administratif inutile si le projet ne le nécessite pas immédiatement.
+
+Privilégier une architecture prête à recevoir ces fonctions.
+
+# 16. CONTENU ET RÉDACTION
+
+Le site doit être en français québécois naturel.
+
+Ton :
+
+- Professionnel.
+- Direct.
+- Rassurant.
+- Accessible.
+- Crédible.
+- Sans exagération.
+- Sans promesses irréalistes.
+
+Éviter les textes génériques et répétitifs.
+
+Ne pas inventer de témoignages ou de résultats.
+
+Prévoir des textes de démonstration clairement identifiés comme tels lorsque les informations réelles ne sont pas disponibles.
+
+L'architecture doit permettre à une autre IA de rédiger et d'intégrer ultérieurement les contenus sans modifier les composants techniques.
+
+# 17. TESTS ET CONTRÔLE QUALITÉ
+
+Avant de considérer le travail terminé, effectuer les contrôles suivants :
+
+**Technique**
+
+- Installation des dépendances.
+- Compilation Astro.
+- Vérification TypeScript.
+- Vérification des imports.
+- Vérification des liens.
+- Vérification des routes.
+- Vérification des erreurs de console.
+- Vérification des variables d'environnement.
+
+**Formulaires**
+
+- Parcours complet.
+- Validation des champs.
+- Cases à cocher.
+- Upload des photos.
+- Confirmation.
+- Enregistrement des demandes.
+- Gestion des erreurs.
+- Gestion des territoires hors zone.
+
+**SEO**
+
+- Un H1 principal par page.
+- Titles uniques.
+- Meta descriptions.
+- Canonicals.
+- Sitemap.
+- Robots.
+- Schema JSON-LD.
+- Images avec alt.
+- Liens internes.
+- Pages 404.
+
+**Performance**
+
+- Lighthouse mobile.
+- Core Web Vitals.
+- Poids des images.
+- Chargement des ressources.
+- Vérification des scripts.
+
+**Cookies**
+
+- Refus des cookies facultatifs.
+- Acceptation.
+- Personnalisation.
+- Retrait du consentement.
+- Vérification du blocage des scripts avant consentement.
+
+**Responsive**
+
+- Téléphone.
+- Tablette.
+- Ordinateur.
+
+Ne pas déclarer une fonctionnalité opérationnelle si elle n'a pas été réellement testée.
+
+# 18. MÉTHODE DE TRAVAIL — EXÉCUTION
+
+Je veux que tu exécutes le projet de façon autonome et méthodique.
+
+Procède dans cet ordre :
+
+1. Examiner le dépôt GitHub existant.
+2. Faire l'inventaire des fichiers et fonctionnalités déjà présentes.
+3. Identifier les éléments à conserver.
+4. Établir l'architecture cible.
+5. Construire les fondations techniques.
+6. Créer le système de design.
+7. Construire les composants.
+8. Créer toutes les pages.
+9. Développer le formulaire de qualification.
+10. Mettre en place la gestion des images.
+11. Mettre en place le SEO et Schema.org.
+12. Développer la gestion du consentement.
+13. Préparer les intégrations.
+14. Ajouter les protections de sécurité.
+15. Tester l'ensemble.
+16. Corriger les erreurs.
+17. Préparer le déploiement Vercel.
+
+**IMPORTANT :**
+
+Je veux que tu réalises le travail dans son ensemble, sans t'arrêter après chaque étape pour me demander si tu peux continuer.
+
+Si une clé API, un accès externe ou une information réelle est nécessaire, crée la configuration et identifie clairement ce qui manque. Ne fabrique jamais de fausses informations.
+
+Si une fonctionnalité ne peut pas être activée faute d'accès, construis son intégration et documente précisément les étapes restantes.
+
+Ne remplace jamais une fonctionnalité réelle par un simple bouton décoratif.
+
+Ne supprime pas des fonctionnalités existantes sans justification.
+
+Ne réécris pas inutilement le code déjà fonctionnel.
+
+# 19. LIVRABLES OBLIGATOIRES
+
+À la fin, fournir :
+
+1. L'architecture complète des dossiers.
+2. Les fichiers réellement créés ou modifiés.
+3. La liste des pages disponibles.
+4. Les fonctionnalités opérationnelles.
+5. Les fonctionnalités nécessitant une connexion externe.
+6. Les variables d'environnement à configurer.
+7. Les instructions pour Supabase.
+8. Les instructions pour GoHighLevel.
+9. Les instructions de déploiement Vercel.
+10. Les instructions pour connecter le domaine.
+11. Les tests effectués et leurs résultats.
+12. Les éléments légaux qui nécessitent une validation.
+13. Un guide expliquant comment créer un deuxième site à partir du premier.
+14. Un guide indiquant comment une autre IA peut remplir ou modifier les pages sans toucher à l'architecture.
+
+Créer également un fichier README.md complet.
+
+Créer un document ARCHITECTURE.md qui explique le fonctionnement général du système.
+
+Créer un document CONTENT-GUIDE.md qui explique comment rédiger et intégrer de nouvelles pages.
+
+Créer un document DEPLOYMENT.md pour le déploiement et les configurations.
+
+# 20. RÈGLE FONDAMENTALE POUR LES MODIFICATIONS FUTURES
+
+Ce projet doit devenir un moteur de production de sites Web.
+
+Une autre IA doit pouvoir recevoir une instruction comme :
+
+« Crée une page complète de nettoyage de tapis pour Laval en respectant exactement l'architecture, les composants, le design, le SEO, les règles de performance et les conventions du projet. »
+
+Elle doit pouvoir réaliser ce travail sans reconstruire le site.
+
+Le code technique et le contenu éditorial doivent rester indépendants.
+
+L'architecture doit être suffisamment solide pour supporter 30 sites et plus, sans devenir inutilement complexe ou coûteuse.
+
+**COMMENCE MAINTENANT PAR L'ANALYSE DU DÉPÔT EXISTANT, PUIS EXÉCUTE LA CONSTRUCTION COMPLÈTE.**
+
+## Quelques consignes importantes avant de lancer
+
+Je te recommande de respecter ces quatre points :
+
+1. Ne demande pas à Bolt de rédiger 100 pages immédiatement. Fais construire et tester le moteur d'abord. Le contenu viendra ensuite avec Claude ou ChatGPT.
+2. Ne publie pas les pages légales comme définitives sans validation. Les textes doivent refléter les véritables pratiques de l'entreprise.
+3. Ne mélange pas le contenu et la programmation. C'est ce qui te permettra de travailler avec différentes IA.
+4. Garde une version maître propre dans GitHub. Avant les changements importants, crée un commit pour pouvoir revenir en arrière.
+
+### Mon conseil pour ton projet
+
+Je ferais trois niveaux de développement :
+
+- Niveau 1 : moteur maître, architecture et composants.
+- Niveau 2 : contenu, services, villes et SEO de chaque site.
+- Niveau 3 : tableau de bord centralisé pour gérer les 30+ sites.
+
+C'est une fondation beaucoup plus intéressante qu'une collection de 30 sites programmés séparément.
+
+Prochaine étape recommandée
+
+Une fois le premier site déployé, je pourrai aussi t'aider à mettre en place un contrôle hebdomadaire des performances, du SEO et des erreurs techniques.
+
+🔎Auditer les sites chaque semaineTouchez pour configurer
+
+Et surtout, ne laisse pas Bolt improviser l'architecture : donne-lui ce prompt comme cahier des charges et exige qu'il respecte les décisions techniques jusqu'au bout.

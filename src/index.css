@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #05284F;
+    --color-primary-dark: #031830;
+    --color-primary-light: #0d3e75;
+    --color-secondary: #76A8F9;
+    --color-secondary-light: #e8f1fe;
+    --color-accent: #2563EB;
+    --color-surface-subtle: #F8FAFC;
+    --color-border: #E2E8F0;
+    --color-text-main: #0F172A;
+    --color-text-muted: #64748B;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: var(--color-text-main);
+    background-color: var(--color-surface-subtle);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom utility classes */
+.bg-brand-primary {
+  background-color: var(--color-primary);
+}
+.text-brand-primary {
+  color: var(--color-primary);
+}
+.bg-brand-secondary {
+  background-color: var(--color-secondary);
+}
+.text-brand-secondary {
+  color: var(--color-secondary);
+}
+.border-brand-primary {
+  border-color: var(--color-primary);
+}
+.border-brand-secondary {
+  border-color: var(--color-secondary);
+}
+.bg-brand-subtle {
+  background-color: var(--color-secondary-light);
+}
+
+/* Smooth focus rings for WCAG 2.2 AA accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
