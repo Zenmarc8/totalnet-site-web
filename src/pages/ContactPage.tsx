@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { SiteConfig } from '../config/types';
+import { SiteConfig, LeadSubmission } from '../config/types';
 import { Breadcrumbs } from '../components/seo/Breadcrumbs';
-import { formatQuebecPhone } from '../lib/utils';
+import { formatQuebecPhone, generateLeadId } from '../lib/utils';
+import { submitLead } from '../lib/leadsStore';
 
 interface ContactPageProps {
   siteConfig: SiteConfig;
@@ -17,11 +18,52 @@ export const ContactPage: React.FC<ContactPageProps> = ({ siteConfig, onNavigate
   const [message, setMessage] = useState('');
   const [consentAccepted, setConsentAccepted] = useState(false);
   const [sentSuccess, setSentSuccess] = useState(false);
+const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consentAccepted) return;
+    if (!consentAccepted || isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    const nameParts = name.trim().split(/\s+/);
+    const firstName = nameParts[0] || name.trim();
+    const lastName = nameParts.slice(1).join(' ') || '-';
+
+    const lead: LeadSubmission = {
+      id: generateLeadId(),
+      createdAt: new Date().toISOString(),
+      siteId: siteConfig.siteId,
+      serviceId: 'contact-general',
+      serviceName: `Contact : ${subject}`,
+      propertyType: 'Non spécifié (Formulaire Contact)',
+      specificNeeds: [subject],
+      dimensions: {
+        notes: message,
+      },
+      timeframe: 'Dès que possible',
+      customer: {
+        firstName,
+        lastName,
+        phone,
+        email,
+        city: 'Grand Montréal',
+        postalCode: 'H1L 4S2',
+        notes: message,
+      },
+      photosCount: 0,
+      photoNames: [],
+      isOutOfTerritory: false,
+      privacyConsentAccepted: consentAccepted,
+      marketingConsentAccepted: false,
+      status: 'transmis_supabase',
+    };
+
+    await submitLead(lead);
+
+    setIsSubmitting(false);
     setSentSuccess(true);
+  };
   };
 
   return (
